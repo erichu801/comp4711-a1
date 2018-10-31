@@ -1,0 +1,26 @@
+{
+  "name": "comp4711_a1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erichu801/comp4711_a1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erichu801/comp4711_a1/issues"
+  },
+  "homepage": "https://github.com/erichu801/comp4711_a1#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "jquery": "^3.3.1",
+    "simplewebrtc": "^3.0.2"
+  }
+}
