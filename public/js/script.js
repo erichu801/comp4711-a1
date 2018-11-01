@@ -1,15 +1,15 @@
 window.addEventListener('load', () => {
 	// Local Video
-	const localVidObj = $('#localVid');
+	const localVid = $('#localVid');
 
 	const webrtc = new SimpleWebRTC({
 		// the id/element dom element that will hold "our" video
-		localVidObj: 'localVid',
+		localVid: 'localVid',
 		// immediately ask for camera access
 		autoRequestMedia: true,
 	});
-	// We got access to local camera
+	// Local camera
 	webrtc.on('localStream', () => {
-		localVidObj.show();
+		localVid.show();
 	});
 });
