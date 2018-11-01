@@ -1,22 +1,22 @@
 window.addEventListener('load', () => {
 	// Local Video
-	const localVid = $('#localVid');
+	const localVidObj = $('#localVid');
 
 	// Remote Videos
-	const remoteVid = $('#remoteVid');
+	const remoteVidObj = $('#remoteVid');
 	let linksCount = 0;
 
 	const webrtc = new SimpleWebRTC({
 		// the id/element dom element that will hold "our" video
-		localVid: 'localVid',
+		remoteVidObj: 'localVid',
 		// the id/element dom element that will hold remote videos
-		remoteVid: 'remoteVid',
+		remoteVidObj: 'remoteVid',
 		// immediately ask for camera access
 		autoRequestMedia: true,
 	});
 	// We got access to local camera
 	webrtc.on('localStream', () => {
-		localVid.show();
+		localVidObj.show();
 	});
 
 	// Remote video was added
@@ -24,9 +24,9 @@ window.addEventListener('load', () => {
 		const id = webrtc.getDomId(peer);
 		const html = remoteVideoTemplate({ id });
 		if (linksCount == 0) {
-			remoteVid.html(html);
+			remoteVidObj.html(html);
 		} else {
-			remoteVid.append(html);
+			remoteVidObj.append(html);
 		}
 		$(`#${id}`).html(video);
 		linksCount ++;
