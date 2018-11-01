@@ -5,7 +5,7 @@ window.addEventListener('load', () => {
 	// create our WebRTC connection
 	const webrtc = new SimpleWebRTC({
 		// the id/element dom element that will hold "our" video
-		localVideoEl: 'local-video',
+		localVideoEl: 'localVid',
 		// immediately ask for camera access
 		autoRequestMedia: true,
 	});
