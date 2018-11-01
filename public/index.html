@@ -25,9 +25,21 @@
 			<h4>
 				Local Camera
 			</h4>
-			<video id="vid" autoplay></video>
+			<video id="localVid" autoplay></video>
+		</div>
+
+		<div>
+			<h4>
+				Remote Camera
+			</h4>
+			<video id="remoteVid" autoplay></video>
 		</div>
 	</div>
+
+	<!-- Remote Video Template -->
+	<script id="remote-video-template" type="text/x-handlebars-template">
+		<div id="{{ id }}" class="four wide column"></div>
+	</script>
 
 
 </body>
