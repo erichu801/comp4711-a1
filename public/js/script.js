@@ -24,13 +24,12 @@ window.addEventListener('load', () => {
 	webrtc.on('videoAdded', (video, peer) => {
 		const id = webrtc.getDomId(peer);
 		const html = remoteVideoTemplate({ id });
-		if (linksCount === 0) {
+		if (linksCount == 0) {
 			remoteVid.html(html);
 		} else {
 			remoteVid.append(html);
 		}
 		$(`#${id}`).html(video);
-		$(`#${id} video`).addClass('ui image medium'); // Make video element responsive
 		linksCount ++;
 	});
 });
