@@ -3,7 +3,6 @@ window.addEventListener('load', () => {
 	const localVid = $('#localVid');
 
 	// Remote Videos
-	const remoteVideoTemplate = Handlebars.compile($('#remote-video-template').html());
 	const remoteVid = $('#remoteVid');
 	let linksCount = 0;
 
