@@ -22,6 +22,7 @@ window.addEventListener('load', () => {
 
 	// Remote video was added
 	webrtc.on('videoAdded', (video, peer) => {
+		console.log("here");
 		const id = webrtc.getDomId(peer);
 		if (extUsrCount === 0) {
 			remoteVideosEl.html('<video id=' + id + '></video>');
