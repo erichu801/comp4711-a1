@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
 	formEl.form({
 		fields: {
 			roomKey: 'empty',
-			username: 'empty',
+			displayName: 'empty',
 		},
 	});
 
@@ -33,6 +33,35 @@ window.addEventListener('load', () => {
 	webrtc.on('localStream', () => {
 		localVideoEl.show();
 	});
+ 
+
+	$('.submit').on('click', (event) => {
+		if (!formEl.form('is valid')) {
+		  	return false;
+		}
+		displayName = $('#displayName').val();
+		const roomKey = $('#roomKey').val().toLowerCase();
+		if (event.target.id === 'create-btn') {
+		  	createRoom(roomKey);
+		} else {
+			joinRoom(roomKey);
+		}
+		return false;
+	});
+
+	// Register new Chat Room
+	const createRoom = (roomKey) => {
+		console.info(`Creating new room: ${roomKey}`);
+		webrtc.createRoom(roomKey, (err, name) => {
+
+		});
+	};
+
+	// Join existing Chat Room
+	const joinRoom = (roomKey) => {
+		console.log(`Joining Room: ${roomKey}`);
+		webrtc.joinRoom(roomKey);
+	};
 
 	// Remote video was added
 	webrtc.on('videoAdded', (video, peer) => {
@@ -45,19 +74,4 @@ window.addEventListener('load', () => {
 		}
 		extUsrCount++;
 	});
- 
-
-	$('.submit').on('click', (event) => {
-		if (!formEl.form('is valid')) {
-		  return false;
-		}
-		displayName = $('#displayName').val();
-		const roomKey = $('#roomKey').val().toLowerCase();
-		if (event.target.id === 'create-btn') {
-		  createRoom(roomKey);
-		} else {
-		  joinRoom(roomKey);
-		}
-		return false;
-	  });
 });
