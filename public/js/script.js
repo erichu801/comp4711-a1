@@ -1,9 +1,21 @@
 window.addEventListener('load', () => {
+
+	const formEl = $('.form');
+	let displayName;
+
 	// Local Video
 	const localVideoEl = $('#localVid');
 
 	const remoteVideosEl = $('#remoteVids');
 	let extUsrCount = 0;
+
+	// Add validation rules to Create/Join Room Form
+	formEl.form({
+		fields: {
+			roomKey: 'empty',
+			username: 'empty',
+		},
+	});
 
 	console.log("load");
 
@@ -34,4 +46,18 @@ window.addEventListener('load', () => {
 		extUsrCount++;
 	});
  
+
+	$('.submit').on('click', (event) => {
+		if (!formEl.form('is valid')) {
+		  return false;
+		}
+		displayName = $('#displayName').val();
+		const roomKey = $('#roomKey').val().toLowerCase();
+		if (event.target.id === 'create-btn') {
+		  createRoom(roomKey);
+		} else {
+		  joinRoom(roomKey);
+		}
+		return false;
+	  });
 });
