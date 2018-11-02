@@ -2,7 +2,6 @@ window.addEventListener('load', () => {
 	// Local Video
 	const localVideoEl = $('#localVid');
 
-	const remoteVideoTemplate = Handlebars.compile($('#remote-video-template').html());
 	const remoteVideosEl = $('#remoteVids');
 	let extUsrCount = 0;
 
