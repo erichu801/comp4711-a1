@@ -24,9 +24,9 @@ window.addEventListener('load', () => {
 	webrtc.on('videoAdded', (video, peer) => {
 		const id = webrtc.getDomId(peer);
 		if (extUsrCount === 0) {
-			remoteVideosEl.html(`<video id=` + id + `></video>`);
+			remoteVideosEl.html('<video id=' + id + '></video>');
 		} else {
-			remoteVideosEl.append(`<video></video>`);
+			remoteVideosEl.append('<video id=' + id + '></video>');
 		}
 		extUsrCount++;
 	});
