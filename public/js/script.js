@@ -28,9 +28,6 @@ window.addEventListener('load', () => {
  
 
 	$('.submit').on('click', (event) => {
-		if (!formEl.form('is valid')) {
-		  	return false;
-		}
 		displayName = $('#displayName').val();
 		const roomKey = $('#roomKey').val().toLowerCase();
 		if (event.target.id === 'create-btn') {
