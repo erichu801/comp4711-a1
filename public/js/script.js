@@ -9,8 +9,6 @@ window.addEventListener('load', () => {
 	const remoteVideosEl = $('#remoteVids');
 	let extUsrCount = 0;
 
-	console.log("load");
-
 	// create our WebRTC connection
 	const webrtc = new SimpleWebRTC({
 		// the id/element dom element that will hold "our" video
@@ -58,11 +56,10 @@ window.addEventListener('load', () => {
 		const id = webrtc.getDomId(peer);
 		if (extUsrCount === 0) {
 			console.log("test1");
-			remoteVideosEl.html('<video id=' + id + '></video>');
+			remoteVideosEl.append('<video id=' + id + '></video>');
 		} else {
 			console.log("test2");
 			remoteVideosEl.append('<video id=' + id + '></video>');
-			
 		}
 		extUsrCount++;
 	});
