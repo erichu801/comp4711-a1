@@ -9,14 +9,6 @@ window.addEventListener('load', () => {
 	const remoteVideosEl = $('#remoteVids');
 	let extUsrCount = 0;
 
-	// Add validation rules to Create/Join Room Form
-	formEl.form({
-		fields: {
-			roomKey: 'empty',
-			displayName: 'empty',
-		},
-	});
-
 	console.log("load");
 
 	// create our WebRTC connection
