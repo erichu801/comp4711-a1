@@ -1,12 +1,16 @@
 window.addEventListener('load', () => {
     genUI();
 
+    //Form element
 	const form = $('.form-group');
 
+    //Local video element
 	const localVideoEl = $('#localVid');
 
+    //Div to add remote videos
 	const remoteVideosEl = $('#remoteVids');
 
+    //Create new SimpleWebRTC object
 	const webrtc = new SimpleWebRTC({
 		localVideoEl: 'localVid',
 		remoteVideosEl: 'remoteVids',
@@ -22,10 +26,12 @@ window.addEventListener('load', () => {
         }
 	});
 
+    //Displays local video when available
 	webrtc.on('localStream', () => {
 		localVideoEl.show();
 	});
  
+    //Create room when Create Room button is clicked
 	$('#btnCreate').on('click', () => {
 		displayName = $('#displayName').val();
 		const roomKey = $('#roomKey').val().toLowerCase();
@@ -33,6 +39,7 @@ window.addEventListener('load', () => {
 		$('#localId').html(displayName);
 	});
 
+    //Join room when Join Room button is clicked
 	$('#btnJoin').on('click', () => {
 		displayName = $('#displayName').val();
 		const roomKey = $('#roomKey').val().toLowerCase();
@@ -40,17 +47,20 @@ window.addEventListener('load', () => {
 		$('#localId').html(displayName);
 	});
 
+    //Creates a chat room
 	const createRoom = (roomKey) => {
 		webrtc.createRoom(roomKey, (err, name) => {
 			form.hide("slow");
 		});
 	};
 
+    //Joins a chat room using roomKey
 	const joinRoom = (roomKey) => {
 		webrtc.joinRoom(roomKey);
 		form.hide("slow");
 	};
 
+    //Adds a new video stream when a remote video is connected
 	webrtc.on('videoAdded', (video, peer) => {
 		numRemotes++;
         
@@ -60,7 +70,8 @@ window.addEventListener('load', () => {
 		
 		webrtc.sendToAll("chat", {name: displayName, index: numRemotes});
 	});
-	
+    
+    //Updates display names when a message arrives
 	webrtc.connection.on('message', (data) => {
 		if(data.type === 'chat') {
 			remoteNames = [];

@@ -1,3 +1,4 @@
+//Generate the User Interface
 const genUI = () => {
 	$('.container').html(`
 		<div class="row">
