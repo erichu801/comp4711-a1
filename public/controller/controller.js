@@ -71,7 +71,6 @@ window.addEventListener('load', () => {
     //Adds a new video stream when a remote video is connected
 	webrtc.on('videoAdded', (video, peer) => {
 		numRemotes++;
-        
         remoteVideosEl.append(
             `<h4 id=h` + numRemotes + `>Display Name</h4>`
         );
@@ -79,6 +78,12 @@ window.addEventListener('load', () => {
 		webrtc.sendToAll("chat", {name: displayName, index: numRemotes});
 	});
     
+    //Removes display name when a remote video disconnects
+    webrtc.on('videoRemoved', (video, peer) => {
+        numRemotes--;
+        $("#h" + numRemotes).remove();
+    });
+
     //Updates display names when a message arrives
 	webrtc.connection.on('message', (data) => {
 		if(data.type === 'chat') {
