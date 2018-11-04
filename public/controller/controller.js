@@ -33,18 +33,26 @@ window.addEventListener('load', () => {
  
     //Create room when Create Room button is clicked
 	$('#btnCreate').on('click', () => {
-		displayName = $('#displayName').val();
-		const roomKey = $('#roomKey').val().toLowerCase();
-		createRoom(roomKey);
-		$('#localId').html(displayName);
+        if($('#displayName').val() != '') {
+            displayName = $('#displayName').val();
+            const roomKey = $('#roomKey').val().toLowerCase();
+            createRoom(roomKey);
+            $('#localId').html(displayName);
+        } else {
+            alert("Please enter a display name");
+        }
 	});
 
     //Join room when Join Room button is clicked
 	$('#btnJoin').on('click', () => {
-		displayName = $('#displayName').val();
-		const roomKey = $('#roomKey').val().toLowerCase();
-		joinRoom(roomKey);
-		$('#localId').html(displayName);
+        if($('#displayName').val() != '') {
+            displayName = $('#displayName').val();
+            const roomKey = $('#roomKey').val().toLowerCase();
+            joinRoom(roomKey);
+            $('#localId').html(displayName);
+        } else {
+            alert("Please enter a display name");
+        }
 	});
 
     //Creates a chat room
