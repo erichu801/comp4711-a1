@@ -35,36 +35,27 @@ window.addEventListener('load', () => {
 	const createRoom = (roomKey) => {
 		webrtc.createRoom(roomKey, (err, name) => {
 			form.hide();
-			postMessage(displayName + ` created chatroom`);
 		});
 	};
 
 	const joinRoom = (roomKey) => {
 		webrtc.joinRoom(roomKey);
 		form.hide();
-		postMessage(displayName + ` joined chatroom`);
+		webrtc.sendToAll("chat", {name: displayName, index: numRemotes});
 	};
 
 	webrtc.on('videoAdded', (video, peer) => {
 		const id = webrtc.getDomId(peer);
-		if (numRemotes === 0) {
-			remoteVideosEl.append('<video id=' + id + '></video>');
-		} else {
-			remoteVideosEl.append('<video id=' + id + '></video>');
-		}
 		numRemotes++;
+		remoteVideosEl.append(`<h4 id=h` + numRemotes + `>Display Name</h4>`);
+		remoteVideosEl.append(`<video id=` + id + `></video>`);
+		
+		webrtc.sendToAll("chat", {name: displayName, index: numRemotes});
 	});
-
-	let postMessage = (data) => {
-		console.log(displayName);
-		webrtc.sendToAll('chat', {message: displayName});
-	};
 	
 	webrtc.connection.on('message', (data) => {
-		console.log(data.type);
-		if(data.type === 'chat'){
-			console.log('chat received', data);
-			console.log('<br><br>' + data.payload.message);
+		if(data.type === 'chat') {
+			$('#h' + data.payload.index).html(data.payload.name);
 		}
 	});
 });
