@@ -1,16 +1,10 @@
-var remoteNames = [];
-
 window.addEventListener('load', () => {
 
-	const form = $('.form');
-	let displayName;
-
-	let remoteNames = [];
+	const form = $('.form-group');
 
 	const localVideoEl = $('#localVid');
 
 	const remoteVideosEl = $('#remoteVids');
-	let numRemotes = 0;
 
 	const webrtc = new SimpleWebRTC({
 		localVideoEl: 'localVid',
@@ -22,36 +16,38 @@ window.addEventListener('load', () => {
 		localVideoEl.show();
 	});
  
-
 	$('#btnCreate').on('click', () => {
 		displayName = $('#displayName').val();
 		const roomKey = $('#roomKey').val().toLowerCase();
 		createRoom(roomKey);
+		$('#localId').html(displayName);
 	});
 
 	$('#btnJoin').on('click', () => {
 		displayName = $('#displayName').val();
 		const roomKey = $('#roomKey').val().toLowerCase();
 		joinRoom(roomKey);
-		
+		$('#localId').html(displayName);
 	});
 
 	const createRoom = (roomKey) => {
 		webrtc.createRoom(roomKey, (err, name) => {
-			form.hide();
+			form.hide("slow");
 		});
 	};
 
 	const joinRoom = (roomKey) => {
 		webrtc.joinRoom(roomKey);
-		form.hide();
+		form.hide("slow");
 	};
 
 	webrtc.on('videoAdded', (video, peer) => {
 		const id = webrtc.getDomId(peer);
 		numRemotes++;
-		remoteVideosEl.append(`<h4 id=h` + numRemotes + `>Display Name</h4>`);
-		remoteVideosEl.append(`<video id=` + id + `></video>`);
+        
+        remoteVideosEl.append(
+            `<h4 id=h` + numRemotes + `>Display Name</h4>`
+        );
 		
 		webrtc.sendToAll("chat", {name: displayName, index: numRemotes});
 	});
@@ -65,7 +61,6 @@ window.addEventListener('load', () => {
 				$('#h' + data.payload.index).html(data.payload.name);
 			}
 		}
-		
 	});
 
 });

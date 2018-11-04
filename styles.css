@@ -1,0 +1,10 @@
+.form-group {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+video {
+    padding: 0;
+    display: inline;
+}
+
