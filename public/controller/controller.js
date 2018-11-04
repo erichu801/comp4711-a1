@@ -1,4 +1,5 @@
 window.addEventListener('load', () => {
+    genUI();
 
 	const form = $('.form-group');
 
@@ -9,7 +10,16 @@ window.addEventListener('load', () => {
 	const webrtc = new SimpleWebRTC({
 		localVideoEl: 'localVid',
 		remoteVideosEl: 'remoteVids',
-		autoRequestMedia: true,
+        autoRequestMedia: true,
+        media: { 
+            audio: true,
+            video: {
+                mandatory: {
+                    maxWidth: 320,
+                    maxHeight: 240
+                }
+            }
+        }
 	});
 
 	webrtc.on('localStream', () => {
@@ -42,7 +52,6 @@ window.addEventListener('load', () => {
 	};
 
 	webrtc.on('videoAdded', (video, peer) => {
-		const id = webrtc.getDomId(peer);
 		numRemotes++;
         
         remoteVideosEl.append(
@@ -56,7 +65,6 @@ window.addEventListener('load', () => {
 		if(data.type === 'chat') {
 			remoteNames = [];
 			remoteNames.push(data.payload.name);
-			
 			for(let i = 0; i < remoteNames.length; i += data.payload.index) {
 				$('#h' + data.payload.index).html(data.payload.name);
 			}
