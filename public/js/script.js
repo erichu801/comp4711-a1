@@ -1,7 +1,11 @@
+var remoteNames = [];
+
 window.addEventListener('load', () => {
 
 	const form = $('.form');
 	let displayName;
+
+	let remoteNames = [];
 
 	const localVideoEl = $('#localVid');
 
@@ -41,7 +45,6 @@ window.addEventListener('load', () => {
 	const joinRoom = (roomKey) => {
 		webrtc.joinRoom(roomKey);
 		form.hide();
-		webrtc.sendToAll("chat", {name: displayName, index: numRemotes});
 	};
 
 	webrtc.on('videoAdded', (video, peer) => {
@@ -55,7 +58,14 @@ window.addEventListener('load', () => {
 	
 	webrtc.connection.on('message', (data) => {
 		if(data.type === 'chat') {
-			$('#h' + data.payload.index).html(data.payload.name);
+			remoteNames = [];
+			remoteNames.push(data.payload.name);
+			
+			for(let i = 0; i < remoteNames.length; i += data.payload.index) {
+				$('#h' + data.payload.index).html(data.payload.name);
+			}
 		}
+		
 	});
+
 });
