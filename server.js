@@ -1,8 +1,14 @@
 const express = require('express');
-
+var bodyParser = require("body-parser");
+var routes = require("./routes/routes.js");
 const app = express();
 
 let port = process.env.PORT || 8080;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+routes(app);
 
 // Set public folder as root
 app.use(express.static('public'));
@@ -13,6 +19,9 @@ app.use('/scripts', express.static(`${__dirname}/node_modules/`));
 // Redirect all traffic to index.html
 app.use((req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
-app.listen(port, () => {
-  console.info('listening on %d', port);
+var server = app.listen(port, () => {
+  console.info('listening on %d', server.address().port);
 });
+
+
+

@@ -19,10 +19,9 @@
   },
   "homepage": "https://github.com/erichu801/comp4711_a1#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "handlebars": "^4.0.12",
     "jquery": "^3.3.1",
-    "semantic-ui-css": "^2.4.1",
     "simplewebrtc": "^3.0.2"
   },
   "devDependencies": {}

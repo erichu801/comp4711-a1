@@ -1,6 +1,14 @@
 window.addEventListener('load', () => {
     genUI();
 
+    urlString = window.location.href;
+    url = new URL(urlString);
+    let roomKey = url.searchParams.get("roomKey");
+
+    //alert(url);
+    //alert(roomKey);
+    //window.location.assign("https://www.w3schools.com");
+
     //Form element
 	const form = $('.form-group');
 
@@ -31,6 +39,8 @@ window.addEventListener('load', () => {
 		localVideoEl.show();
 	});
  
+/*
+
     //Create room when Create Room button is clicked
 	$('#btnCreate').on('click', () => {
         if($('#displayName').val() != '') {
@@ -43,17 +53,23 @@ window.addEventListener('load', () => {
         }
 	});
 
+*/
+
+
+
     //Join room when Join Room button is clicked
 	$('#btnJoin').on('click', () => {
         if($('#displayName').val() != '') {
             displayName = $('#displayName').val();
-            const roomKey = $('#roomKey').val().toLowerCase();
+            //const roomKey = $('#roomKey').val().toLowerCase();
             joinRoom(roomKey);
             $('#localId').html(displayName);
         } else {
             alert("Please enter a display name");
         }
 	});
+
+
 
     //Creates a chat room
 	const createRoom = (roomKey) => {
@@ -93,6 +109,14 @@ window.addEventListener('load', () => {
 				$('#h' + data.payload.index).html(data.payload.name);
 			}
 		}
-	});
+    });
+    
+/*
+
+    if(roomKey != null) {
+        joinRoom(roomKey);
+    }
+
+*/
 
 });
