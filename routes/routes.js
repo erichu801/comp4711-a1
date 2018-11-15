@@ -5,7 +5,7 @@ const appRouter = (app) => {
         const key = uuidv4();
         data = ({
             roomKey: key,
-            url: "/?roomKey=" + key
+            url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key
         });
         res.status(200).send(data);
     });
@@ -14,7 +14,7 @@ const appRouter = (app) => {
         const key = uuidv4();
         data = ({
             roomKey: key,
-            url: "/?roomKey=" + key
+            url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key
         });
         res.status(200).send(data);
     });
