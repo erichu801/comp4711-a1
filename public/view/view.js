@@ -33,5 +33,6 @@ const genUI = () => {
 };
 
 const requestCaptcha = () => {
+	alert("captcha");
 	$('.form-group').append(`<div class="g-recaptcha" data-sitekey="6LeNYXwUAAAAAEda1v2wFBTNuHrUmFtBH5XMcOWD"></div>`);   
 }
