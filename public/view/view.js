@@ -11,13 +11,16 @@ const genUI = () => {
 					` +
 					`<br>
 					` +
-					`<button id="btnJoin" class="btn btn-info">Join Room</button>					
+					`
+					<form action="?" method="POST">
+						<div id="myCaptcha"></div>
+					</form>
+					<br>
+					<button id="btnJoin" class="btn btn-info">Join Room</button>					
 				</div>
 			</div>
 			<div class="col-sm"></div>
-				<form action="?" method="POST">
-					<div id="myCaptcha"></div>
-				</form>
+				
 			<div class="col-sm"></div>
 		</div>
 		<div>
