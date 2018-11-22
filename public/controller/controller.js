@@ -101,7 +101,7 @@ window.addEventListener('load', () => {
 
 });
 
-const verifyCallback = function( response ) {
+var verifyCallback = function( response ) {
     console.log(hasCaptcha);
     hasCaptcha = true;
     console.log(hasCaptcha);
