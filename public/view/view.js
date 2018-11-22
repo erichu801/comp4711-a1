@@ -9,11 +9,8 @@ const genUI = () => {
 					<label>Display Name</label>
 					<input type="text" class="form-control input-sm" id="displayName" placeholder="Enter display name" name="displayName">
 					` +
-					//<label>Room Key</label>
-					//<input type="text" class="form-control input-sm" id="roomKey" placeholder="Enter room key" name="roomKey">
 					`<br>
 					` +
-					//<button id="btnCreate" class="btn btn-success">Create Room</button>
 					`<button id="btnJoin" class="btn btn-info">Join Room</button>					
 				</div>
 			</div>
@@ -36,8 +33,3 @@ const genUI = () => {
 		</div>
 	`);
 };
-
-const requestCaptcha = () => {
-	$('.captcha').append(`<div class="g-recaptcha" data-sitekey="6LeNYXwUAAAAAEda1v2wFBTNuHrUmFtBH5XMcOWD"></div>`);   
-}
-

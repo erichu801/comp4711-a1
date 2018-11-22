@@ -29,10 +29,18 @@ const appRouter = (app) => {
             reqCaptcha = true;
         }
         const key = uuidv4();
-        data = ({
-            roomKey: key,
-            url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key
-        });
+        if(reqCaptcha) {
+            data = ({
+                roomKey: key,
+                url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key + "&captcha=1"
+            });
+        } else {
+            data = ({
+                roomKey: key,
+                url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key + "&captcha=0"
+            });
+        }
+        
         res.status(200).send(data);
     });
 }
