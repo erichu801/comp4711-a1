@@ -4,6 +4,7 @@ let reqCaptcha = false;
 const appRouter = (app) => {
     app.get("/api/", function(req, res) {
         let token = req.headers["token"];
+        console.log("token: " + token);
         if(token != "badgebook") {
             reqCaptcha = true;
         }
@@ -25,6 +26,7 @@ const appRouter = (app) => {
 
     app.post("/api/", function(req, res) {
         let token = req.headers["token"];
+        console.log("token: " + token);
         if(token != "badgebook") {
             reqCaptcha = true;
         }
