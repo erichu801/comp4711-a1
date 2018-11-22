@@ -16,6 +16,8 @@ const genUI = () => {
 				</div>
 			</div>
 			<div class="col-sm"></div>
+				<form class="captcha" action="?" method="POST">
+				</form>
 			<div class="col-sm"></div>
 		</div>
 		<div>
@@ -33,6 +35,5 @@ const genUI = () => {
 };
 
 const requestCaptcha = () => {
-	alert("captcha");
-	$('.form-group').append(`<div class="g-recaptcha" data-sitekey="6LeNYXwUAAAAAEda1v2wFBTNuHrUmFtBH5XMcOWD"></div>`);   
+	$('.captcha').append(`<div class="g-recaptcha" data-sitekey="6LeNYXwUAAAAAEda1v2wFBTNuHrUmFtBH5XMcOWD"></div>`);   
 }
