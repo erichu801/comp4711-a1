@@ -93,6 +93,3 @@ window.addEventListener('load', () => {
     }
 });
 
-const requestCaptcha = () => {
-    alert("test");
-}
