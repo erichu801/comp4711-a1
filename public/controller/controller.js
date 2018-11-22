@@ -4,10 +4,7 @@ window.addEventListener('load', () => {
     urlString = window.location.href;
     url = new URL(urlString);
     let roomKey = url.searchParams.get("roomKey");
-
-    //alert(url);
-    //alert(roomKey);
-    //window.location.assign("https://www.w3schools.com");
+    let captcha = url.searchParams.get("captcha");
 
     //Form element
 	const form = $('.form-group');
@@ -38,24 +35,6 @@ window.addEventListener('load', () => {
 	webrtc.on('localStream', () => {
 		localVideoEl.show();
 	});
- 
-/*
-
-    //Create room when Create Room button is clicked
-	$('#btnCreate').on('click', () => {
-        if($('#displayName').val() != '') {
-            displayName = $('#displayName').val();
-            const roomKey = $('#roomKey').val().toLowerCase();
-            createRoom(roomKey);
-            $('#localId').html(displayName);
-        } else {
-            alert("Please enter a display name");
-        }
-	});
-
-*/
-
-
 
     //Join room when Join Room button is clicked
 	$('#btnJoin').on('click', () => {
@@ -68,8 +47,6 @@ window.addEventListener('load', () => {
             alert("Please enter a display name");
         }
 	});
-
-
 
     //Creates a chat room
 	const createRoom = (roomKey) => {
@@ -110,13 +87,12 @@ window.addEventListener('load', () => {
 			}
 		}
     });
-    
-/*
 
-    if(roomKey != null) {
-        joinRoom(roomKey);
+    if(captcha == 1) {
+        requestCaptcha();
     }
-
-*/
-
 });
+
+const requestCaptcha = () => {
+    alert("test");
+}
