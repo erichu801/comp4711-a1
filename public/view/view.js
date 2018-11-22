@@ -1,3 +1,5 @@
+
+
 //Generate the User Interface
 const genUI = () => {
 	$('.container').html(`
@@ -16,7 +18,8 @@ const genUI = () => {
 				</div>
 			</div>
 			<div class="col-sm"></div>
-				<form class="captcha" action="?" method="POST">
+				<form action="?" method="POST">
+					<div id="myCaptcha"></div>
 				</form>
 			<div class="col-sm"></div>
 		</div>
@@ -37,3 +40,4 @@ const genUI = () => {
 const requestCaptcha = () => {
 	$('.captcha').append(`<div class="g-recaptcha" data-sitekey="6LeNYXwUAAAAAEda1v2wFBTNuHrUmFtBH5XMcOWD"></div>`);   
 }
+

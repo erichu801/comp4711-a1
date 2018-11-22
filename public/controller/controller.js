@@ -1,4 +1,9 @@
 window.addEventListener('load', () => {
+    var captchaWidgetId = grecaptcha.render( 'myCaptcha', {
+        'sitekey' : '6LeNYXwUAAAAAEda1v2wFBTNuHrUmFtBH5XMcOWD',  // required
+        'callback': 'verifyCallback'  // optional
+      });
+
     genUI();
 
     urlString = window.location.href;
@@ -93,3 +98,6 @@ window.addEventListener('load', () => {
     }
 });
 
+var verifyCallback = function( response ) {
+    console.log( 'g-recaptcha-response: ' + response );
+};
