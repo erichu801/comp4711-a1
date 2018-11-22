@@ -11,6 +11,12 @@ const appRouter = (app) => {
     });
 
     app.post("/api/", function(req, res) {
+        let token = req.headers["token"];
+        if(token != "badgebook") {
+            res.status(403).send("Invalid token.");
+            res.end();
+            return;
+        }
         const key = uuidv4();
         data = ({
             roomKey: key,
