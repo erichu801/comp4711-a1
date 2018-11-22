@@ -59,7 +59,7 @@ window.addEventListener('load', () => {
             alert("Please verify captcha");
         }
 
-        if(hasCaptcha && hasCaptcha) {
+        if(hasCaptcha && hasName) {
             displayName = $('#displayName').val();
             joinRoom(roomKey);
             $('#localId').html(displayName);
