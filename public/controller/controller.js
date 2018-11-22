@@ -58,7 +58,7 @@ window.addEventListener('load', () => {
         if(!hasCaptcha) {
             alert("Please verify captcha");
         }
-
+        console.log(hasCaptcha);
         if(hasCaptcha && hasName) {
             displayName = $('#displayName').val();
             joinRoom(roomKey);
@@ -102,6 +102,8 @@ window.addEventListener('load', () => {
 });
 
 const verifyCallback = function( response ) {
+    console.log(hasCaptcha);
     hasCaptcha = true;
+    console.log(hasCaptcha);
     console.log( 'g-recaptcha-response: ' + response );
 };
