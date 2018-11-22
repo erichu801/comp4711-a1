@@ -1,8 +1,8 @@
+let hasName = false;
+let hasCaptcha = true;
+
 window.addEventListener('load', () => {
     genUI();
-
-    let hasName = false;
-    let hasCaptcha = true;
 
     urlString = window.location.href;
     url = new URL(urlString);
@@ -99,9 +99,9 @@ window.addEventListener('load', () => {
 		}
     });
 
-    const verifyCallback = function( response ) {
-        hasCaptcha = true;
-        console.log( 'g-recaptcha-response: ' + response );
-    };
-
 });
+
+const verifyCallback = function( response ) {
+    hasCaptcha = true;
+    console.log( 'g-recaptcha-response: ' + response );
+};
