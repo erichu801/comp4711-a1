@@ -10,6 +10,7 @@ const appRouter = (app) => {
         const key = uuidv4();
         if(reqCaptcha) {
             data = ({
+                roomKey: key,
                 url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key + "&captcha=1"
             });
         } else {
@@ -30,10 +31,12 @@ const appRouter = (app) => {
         const key = uuidv4();
         if(reqCaptcha) {
             data = ({
+                roomKey: key,
                 url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key + "&captcha=1"
             });
         } else {
             data = ({
+                roomKey: key,
                 url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key + "&captcha=0"
             });
         }
