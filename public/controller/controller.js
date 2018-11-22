@@ -99,9 +99,9 @@ window.addEventListener('load', () => {
 		}
     });
 
-});
+    const verifyCallback = function( response ) {
+        hasCaptcha = true;
+        console.log( 'g-recaptcha-response: ' + response );
+    };
 
-var verifyCallback = function( response ) {
-    hasCaptcha = true;
-    console.log( 'g-recaptcha-response: ' + response );
-};
+});
