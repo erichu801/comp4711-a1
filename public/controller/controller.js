@@ -1,9 +1,4 @@
 window.addEventListener('load', () => {
-    var captchaWidgetId = grecaptcha.render( 'myCaptcha', {
-        'sitekey' : '6LeNYXwUAAAAAEda1v2wFBTNuHrUmFtBH5XMcOWD',  // required
-        'callback': 'verifyCallback'  // optional
-      });
-
     genUI();
 
     urlString = window.location.href;
@@ -94,7 +89,10 @@ window.addEventListener('load', () => {
     });
 
     if(captcha == 1) {
-        requestCaptcha();
+        var captchaWidgetId = grecaptcha.render( 'myCaptcha', {
+            'sitekey' : '6LeNYXwUAAAAAEda1v2wFBTNuHrUmFtBH5XMcOWD',  // required
+            'callback': 'verifyCallback'  // optional
+        });
     }
 });
 
