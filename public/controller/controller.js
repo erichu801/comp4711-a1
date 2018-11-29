@@ -16,8 +16,27 @@ window.addEventListener('load', () => {
 	const localVideoEl = $('#localVid');
 
     //Div to add remote videos
-	const remoteVideosEl = $('#remoteVids');
-
+	      //const remoteVideosEl = $('#remoteVids');
+          if (numRemotes == 1) {
+            const remoteVideosEl = $('#remoteVids1');
+        }
+        else if (numRemotes == 2) {
+            const remoteVideosEl = $('#remoteVids2');
+        }
+        else if (numRemotes == 3) {
+            const remoteVideosEl = $('#remoteVids3');
+        }
+        else if (numRemotes == 4) {
+            const remoteVideosEl = $('#remoteVids4');
+        }
+        else if (numRemotes == 5) {
+            const remoteVideosEl = $('#remoteVids5');
+        }
+        else if (numRemotes > 5){
+            return;
+        }
+            
+    
     //Create new SimpleWebRTC object
 	const webrtc = new SimpleWebRTC({
 		localVideoEl: 'localVid',
@@ -86,10 +105,13 @@ window.addEventListener('load', () => {
 
     //Adds a new video stream when a remote video is connected
 	webrtc.on('videoAdded', (video, peer) => {
-		numRemotes++;
+        numRemotes++;
+        /*
         remoteVideosEl.append(
             `<h4 id=h` + numRemotes + `>Display Name</h4>`
         );
+
+        */
 		
 		webrtc.sendToAll("chat", {name: displayName, index: numRemotes});
 	});
