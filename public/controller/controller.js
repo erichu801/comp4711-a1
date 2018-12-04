@@ -74,10 +74,12 @@ window.addEventListener('load', () => {
 
     //Adds a new video stream when a remote video is connected
 	webrtc.on('videoAdded', (video, peer) => {
-		numRemotes++;
+        numRemotes++;
+        /*
         remoteVideosEl.append(
             `<h4 id=h` + numRemotes + `>Display Name</h4>`
         );
+        */
 		
 		webrtc.sendToAll("chat", {name: displayName, index: numRemotes});
 	});
