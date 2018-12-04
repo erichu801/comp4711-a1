@@ -29,3 +29,11 @@ const genUI = () => {
 		</div>
 	`);
 };
+
+const copyLink = () => {
+	var copyText = document.getElementById("share-link");
+
+	copyText.select();
+  
+	document.execCommand("copy");
+}
