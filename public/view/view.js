@@ -1,5 +1,3 @@
-
-
 //Generate the User Interface
 const genUI = () => {
 	$('.container').html(`
