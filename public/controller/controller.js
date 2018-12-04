@@ -9,8 +9,8 @@ window.addEventListener('load', () => {
     let roomKey = url.searchParams.get("roomKey");
     let captcha = url.searchParams.get("captcha");
 
-    $('#share-link').append(urlString);
-
+    $('#share-link').val(urlString);
+    
     if(captcha == 1) {
         hasCaptcha = false;
         var captchaWidgetId = grecaptcha.render( 'myCaptcha', {
