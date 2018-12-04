@@ -1,13 +1,21 @@
+let hasName = false;
+let hasCaptcha = true;
+
 window.addEventListener('load', () => {
     genUI();
 
     urlString = window.location.href;
     url = new URL(urlString);
     let roomKey = url.searchParams.get("roomKey");
+    let captcha = url.searchParams.get("captcha");
 
-    //alert(url);
-    //alert(roomKey);
-    //window.location.assign("https://www.w3schools.com");
+    if(captcha == 1) {
+        hasCaptcha = false;
+        var captchaWidgetId = grecaptcha.render( 'myCaptcha', {
+            'sitekey' : '6LeNYXwUAAAAAEda1v2wFBTNuHrUmFtBH5XMcOWD',  // required
+            'callback': 'verifyCallback'  // optional
+        });
+    }
 
     //Form element
 	const form = $('.form-group');
@@ -38,45 +46,25 @@ window.addEventListener('load', () => {
 	webrtc.on('localStream', () => {
 		localVideoEl.show();
 	});
- 
-/*
-
-    //Create room when Create Room button is clicked
-	$('#btnCreate').on('click', () => {
-        if($('#displayName').val() != '') {
-            displayName = $('#displayName').val();
-            const roomKey = $('#roomKey').val().toLowerCase();
-            createRoom(roomKey);
-            $('#localId').html(displayName);
-        } else {
-            alert("Please enter a display name");
-        }
-	});
-
-*/
-
-
 
     //Join room when Join Room button is clicked
 	$('#btnJoin').on('click', () => {
         if($('#displayName').val() != '') {
-            displayName = $('#displayName').val();
-            //const roomKey = $('#roomKey').val().toLowerCase();
-            joinRoom(roomKey);
-            $('#localId').html(displayName);
+            hasName = true;
         } else {
             alert("Please enter a display name");
         }
+
+        if(!hasCaptcha) {
+            alert("Please verify captcha");
+        }
+
+        if(hasCaptcha && hasName) {
+            displayName = $('#displayName').val();
+            joinRoom(roomKey);
+            $('#localId').html(displayName);
+        }
 	});
-
-
-
-    //Creates a chat room
-	const createRoom = (roomKey) => {
-		webrtc.createRoom(roomKey, (err, name) => {
-			form.hide("slow");
-		});
-	};
 
     //Joins a chat room using roomKey
 	const joinRoom = (roomKey) => {
@@ -87,6 +75,7 @@ window.addEventListener('load', () => {
     //Adds a new video stream when a remote video is connected
 	webrtc.on('videoAdded', (video, peer) => {
         numRemotes++;		
+
 		webrtc.sendToAll("chat", {name: displayName, index: numRemotes});
 	});
     
@@ -106,13 +95,10 @@ window.addEventListener('load', () => {
 			}
 		}
     });
-    
-/*
-
-    if(roomKey != null) {
-        joinRoom(roomKey);
-    }
-
-*/
 
 });
+
+var verifyCallback = function( response ) {
+    hasCaptcha = true;
+    console.log( 'g-recaptcha-response: ' + response );
+};
