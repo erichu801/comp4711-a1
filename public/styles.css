@@ -21,8 +21,7 @@ video {
 }
 
 #share-link {
-    width: 60%;
-    margin-right: 10px;
+    width: 70%;
     border: 1px solid #ced4da;
     border-radius: .25rem;
     height: calc(2.25rem + 2px);
@@ -33,4 +32,8 @@ video {
 
 #share-btn {
     margin-top: 15px;
+}
+
+#link-div {
+    margin-top: 50px;
 }
