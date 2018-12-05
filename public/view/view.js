@@ -22,12 +22,13 @@ const genUI = () => {
 			<div class="col-sm"></div>
 		</div>
 		<div class="row">
-			<div class="col">
+			<div class="col-sm-4">
 				<h4 id="localId">You</h4>
 				<video id="localVid" autoplay></video>
 			</div>
-			<div class="link-container">
+			<div class="col-sm-8 link-container">
 				<input type="text" id="share-link">
+				<br>
 				<button class="btn btn-info" onclick="copyLink()" id="share-btn">Copy Shareable Link</button>
 			</div>
 		</div>
