@@ -91,8 +91,7 @@ window.addEventListener('load', () => {
 	webrtc.connection.on('message', (data) => {
 		if(data.type === 'chat') {
             remoteNames.push(data.payload.name);
-            $('#user-list').html("" + $.unique(remoteNames) + "\n");
-
+            $('#list').html("" + $.unique(remoteNames) + "\n");
 			for(let i = 0; i < remoteNames.length; i += data.payload.index) {
 				$('#h' + data.payload.index).html(data.payload.name);
 			}

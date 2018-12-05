@@ -28,6 +28,7 @@ const genUI = () => {
 			</div>
 			<div class="col" id="user-list">
 				<h3 id="users">Users in this room</h3>
+				<div id="list"></div>
 			</div>
 		</div>
 		<div class="row" id="remoteVids">
