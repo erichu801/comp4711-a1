@@ -71,7 +71,8 @@ window.addEventListener('load', () => {
     //Joins a chat room using roomKey
 	const joinRoom = (roomKey) => {
 		webrtc.joinRoom(roomKey);
-		form.hide("slow");
+        form.hide("slow");
+        $('#link-div').show("slow");
 	};
 
     //Adds a new video stream when a remote video is connected
