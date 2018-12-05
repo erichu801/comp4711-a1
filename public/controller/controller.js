@@ -96,8 +96,8 @@ window.addEventListener('load', () => {
             if (idx == -1) {
                 remoteNames.push(data.payload.name);
             }
-            
-            $('#user-list').append(remoteNames);
+
+            $('#user-list').append("" + remoteNames + "\n");
 
 			for(let i = 0; i < remoteNames.length; i += data.payload.index) {
 				$('#h' + data.payload.index).html(data.payload.name);
