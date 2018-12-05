@@ -21,9 +21,14 @@ const genUI = () => {
 				
 			<div class="col-sm"></div>
 		</div>
-		<div>
-			<h4 id="localId">You</h4>
-			<video id="localVid" autoplay></video>
+		<div class="row">
+			<div class="col">
+				<h4 id="localId">You</h4>
+				<video id="localVid" autoplay></video>
+			</div>
+			<div class="col" id="user-list">
+				<h3 id="users">Users in this room</h3>
+			</div>
 		</div>
 		<div class="row" id="remoteVids">
 		</div>
@@ -31,9 +36,7 @@ const genUI = () => {
 };
 
 const copyLink = () => {
-	var copyText = document.getElementById("share-link");
-
+	let copyText = document.getElementById("share-link");
 	copyText.select();
-  
 	document.execCommand("copy");
 }

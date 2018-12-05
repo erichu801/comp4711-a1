@@ -10,10 +10,10 @@ window.addEventListener('load', () => {
     let captcha = url.searchParams.get("captcha");
 
     $('#share-link').val(urlString);
-    
+
     if(captcha == 1) {
         hasCaptcha = false;
-        var captchaWidgetId = grecaptcha.render( 'myCaptcha', {
+        let captchaWidgetId = grecaptcha.render( 'myCaptcha', {
             'sitekey' : '6LeNYXwUAAAAAEda1v2wFBTNuHrUmFtBH5XMcOWD',  // required
             'callback': 'verifyCallback'  // optional
         });
@@ -91,7 +91,8 @@ window.addEventListener('load', () => {
 	webrtc.connection.on('message', (data) => {
 		if(data.type === 'chat') {
 			remoteNames = [];
-			remoteNames.push(data.payload.name);
+            remoteNames.push(data.payload.name);
+            console.log(remoteNames);
 			for(let i = 0; i < remoteNames.length; i += data.payload.index) {
 				$('#h' + data.payload.index).html(data.payload.name);
 			}
@@ -100,7 +101,7 @@ window.addEventListener('load', () => {
 
 });
 
-var verifyCallback = function( response ) {
+let verifyCallback = function( response ) {
     hasCaptcha = true;
     console.log( 'g-recaptcha-response: ' + response );
 };
