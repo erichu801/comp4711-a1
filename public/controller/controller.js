@@ -92,8 +92,8 @@ window.addEventListener('load', () => {
 		if(data.type === 'chat') {
 			remoteNames = [];
             remoteNames.push(data.payload.name);
-
-            $('#user-list').append("" + remoteNames.unique() + "\n");
+            
+            $('#user-list').append("" + $.unique(remoteNames) + "\n");
 
 			for(let i = 0; i < remoteNames.length; i += data.payload.index) {
 				$('#h' + data.payload.index).html(data.payload.name);
