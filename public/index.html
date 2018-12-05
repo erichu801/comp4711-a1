@@ -13,10 +13,31 @@
 	</nav>
 	<div class="link-container">
 		<input type="text" id="share-link">
-		<button class="btn btn-info" onclick="copyLink()">Copy Shareable Link</button>
+		<button class="btn btn-info" onclick="copyLink()" id="share-btn">Copy Shareable Link</button>
 	</div>
 	
 	<div class="container">
+		<div class="row">
+			<div class="col-sm">
+				<div class="form-group">
+					<label>Display Name</label>
+					<input type="text" class="form-control input-sm" id="displayName" placeholder="Enter display name" name="displayName">
+					<br>
+					<form action="?" method="POST">
+						<div id="myCaptcha"></div>
+					</form>
+					<br>
+					<button id="btnJoin" class="btn btn-info">Join Room</button>					
+				</div>
+			</div>
+			<div class="col-sm"></div>
+			<div class="col-sm"></div>
+		</div>
+		<div>
+			<h4 id="localId">You</h4>
+			<video id="localVid" autoplay></video>
+		</div>
+		<div class="row" id="remoteVids"></div>
 	</div>
 
 	<script src="scripts/jquery/dist/jquery.min.js"></script>

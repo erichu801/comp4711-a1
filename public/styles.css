@@ -16,6 +16,21 @@ video {
 }
 
 .link-container {
-    width: 50%;
-    margin: auto;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#share-link {
+    width: 40%;
+    margin-right: 10px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+#share-btn {
+    margin-top: -6px;
 }
