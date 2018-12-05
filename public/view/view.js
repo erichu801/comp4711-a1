@@ -26,9 +26,9 @@ const genUI = () => {
 				<h4 id="localId">You</h4>
 				<video id="localVid" autoplay></video>
 			</div>
-			<div class="col" id="user-list">
-				<h3 id="users">Users in this room</h3>
-				<div id="list"></div>
+			<div class="link-container">
+				<input type="text" id="share-link">
+				<button class="btn btn-info" onclick="copyLink()" id="share-btn">Copy Shareable Link</button>
 			</div>
 		</div>
 		<div class="row" id="remoteVids">
