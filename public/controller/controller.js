@@ -90,9 +90,8 @@ window.addEventListener('load', () => {
     //Updates display names when a message arrives
 	webrtc.connection.on('message', (data) => {
 		if(data.type === 'chat') {
-			remoteNames = [];
             remoteNames.push(data.payload.name);
-            $('#user-list').append("" + $.unique(remoteNames) + "\n");
+            $('#user-list').html("" + remoteNames + "\n");
 
 			for(let i = 0; i < remoteNames.length; i += data.payload.index) {
 				$('#h' + data.payload.index).html(data.payload.name);
