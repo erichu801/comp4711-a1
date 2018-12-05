@@ -92,7 +92,7 @@ window.addEventListener('load', () => {
 		if(data.type === 'chat') {
 			remoteNames = [];
             remoteNames.push(data.payload.name);
-            console.log(remoteNames);
+            $('#user-list').append(remoteNames);
 			for(let i = 0; i < remoteNames.length; i += data.payload.index) {
 				$('#h' + data.payload.index).html(data.payload.name);
 			}
