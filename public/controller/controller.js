@@ -91,8 +91,14 @@ window.addEventListener('load', () => {
 	webrtc.connection.on('message', (data) => {
 		if(data.type === 'chat') {
 			remoteNames = [];
-            remoteNames.push(data.payload.name);
+            let idx = $.inArray(data.payload.name, remoteNames);
+
+            if (idx == -1) {
+                remoteNames.push(data.payload.name);
+            }
+            
             $('#user-list').append(remoteNames);
+
 			for(let i = 0; i < remoteNames.length; i += data.payload.index) {
 				$('#h' + data.payload.index).html(data.payload.name);
 			}
