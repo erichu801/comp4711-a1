@@ -23,7 +23,7 @@ const genUI = () => {
 		</div>
 		<div>
 			<h4 id="localId">You</h4>
-			<video id="localVid" width="320" height="240" autoplay></video>
+			<video id="localVid" autoplay></video>
 		</div>
 		<div class="row" id="remoteVids">
 		</div>
