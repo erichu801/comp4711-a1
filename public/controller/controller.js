@@ -101,7 +101,7 @@ window.addEventListener('load', () => {
 
 });
 
-let verifyCallback = function( response ) {
+var verifyCallback = function( response ) {
     hasCaptcha = true;
     console.log( 'g-recaptcha-response: ' + response );
 };
