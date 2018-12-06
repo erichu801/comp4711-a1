@@ -4,10 +4,10 @@ let reqCaptcha;
 const appRouter = (app) => {
     app.get("/api/", function(req, res) {
         let token = req.headers["token"];
-        if(token != "badgebook") {
-            reqCaptcha = true;
-        } else {
+        if(token == "badgebook") {
             reqCaptcha = false;
+        } else {
+            reqCaptcha = true;
         }
         const key = uuidv4();
         if(reqCaptcha) {
@@ -27,10 +27,10 @@ const appRouter = (app) => {
 
     app.post("/api/", function(req, res) {
         let token = req.headers["token"];
-        if(token != "badgebook") {
-            reqCaptcha = true;
-        } else {
+        if(token == "badgebook") {
             reqCaptcha = false;
+        } else {
+            reqCaptcha = true;
         }
         const key = uuidv4();
         if(reqCaptcha) {
