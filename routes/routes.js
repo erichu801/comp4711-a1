@@ -1,5 +1,5 @@
 const uuidv4 = require('uuid/v4');
-let reqCaptcha = false;
+var reqCaptcha = false;
 
 const appRouter = (app) => {
     app.get("/api/", function(req, res) {
