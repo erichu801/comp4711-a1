@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
     let roomKey = url.searchParams.get("roomKey");
     let captcha = url.searchParams.get("captcha");
 
-    $('#share-link').val(urlString);
+    $('#share-link').val(urlString.slice(0,-1) + "1");
 
     if(captcha == 1) {
         hasCaptcha = false;
