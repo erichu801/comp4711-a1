@@ -1,5 +1,5 @@
 const uuidv4 = require('uuid/v4');
-let reqCaptcha = false;
+var reqCaptcha = false;
 
 const appRouter = (app) => {
     app.get("/api/", function(req, res) {
@@ -27,7 +27,7 @@ const appRouter = (app) => {
 
     app.post("/api/", function(req, res) {
         let token = req.headers["token"];
-        if(!token.localeCompare("badgebook")) {
+        if(!token.localeCompare("badgebook")) { 
             reqCaptcha = true;
         }
         const key = uuidv4();
