@@ -11,12 +11,12 @@ const appRouter = (app) => {
         if(reqCaptcha) {
             data = ({
                 roomKey: key,
-                url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key + "&captcha=1"
+                url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key + "&captcha=0"
             });
         } else {
             data = ({
                 roomKey: key,
-                url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key + "&captcha=0"
+                url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key + "&captcha=1"
             });
         }
         
@@ -32,12 +32,12 @@ const appRouter = (app) => {
         if(reqCaptcha) {
             data = ({
                 roomKey: key,
-                url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key + "&captcha=1"
+                url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key + "&captcha=0"
             });
         } else {
             data = ({
                 roomKey: key,
-                url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key + "&captcha=0"
+                url: "https://comp4711-a1.herokuapp.com/?roomKey=" + key + "&captcha=1"
             });
         }
         
